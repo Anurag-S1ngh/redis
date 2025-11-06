@@ -27,8 +27,6 @@ func Parse(reader *bufio.Reader) ([]string, error) {
 		return nil, err
 	}
 
-	fmt.Println("argCount", argCount)
-
 	parts := make([]string, 0, argCount)
 
 	for range argCount {
@@ -36,8 +34,6 @@ func Parse(reader *bufio.Reader) ([]string, error) {
 		if err != nil {
 			return nil, err
 		}
-
-		fmt.Println("typ", string(typ))
 
 		switch typ {
 		case '$':
@@ -62,7 +58,6 @@ func parseBulk(reader *bufio.Reader) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fmt.Println("argNumber", argNumber)
 
 	if argNumber == 0 {
 		if _, err := reader.ReadString('\n'); err != nil {
